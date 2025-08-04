@@ -1,0 +1,42 @@
+/* Section Header Styles */
+
+.space-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.space-section-title {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(var(--space-accent), 1);
+}
+
+.space-section-title--lg {
+  font-size: 1.125rem;
+}
+
+.space-section-title--md {
+  font-size: 1rem;
+}
+
+.space-section-title--sm {
+  font-size: 0.875rem;
+}
+
+.space-section-subtitle {
+  color: rgba(var(--space-text), 0.6);
+  font-size: 0.875rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.space-section-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

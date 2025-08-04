@@ -1,0 +1,34 @@
+/* Space Card Styles */
+
+.space-card {
+  position: relative;
+  padding: 1rem;
+  background-color: rgba(15, 23, 42, 0.2); /* bg-slate-900/20 */
+}
+
+.space-card--border-thin {
+  border: 1px solid rgba(var(--space-accent), 0.2);
+}
+
+.space-card--border-thick {
+  border: 2px solid rgba(var(--space-accent), 0.3);
+}
+
+.space-card--hoverable {
+  transition: border-color 0.3s ease;
+}
+
+.space-card--hoverable:hover {
+  border-color: rgba(var(--space-accent), 0.4);
+}
+
+.space-card-glow {
+  position: absolute;
+  inset: -1px;
+  transition: all 0.3s ease;
+  background: linear-gradient(to right, 
+    rgba(var(--space-accent), 0.3), 
+    rgba(var(--space-accent), 0.2), 
+    rgba(var(--space-accent), 0.3)
+  );
+}

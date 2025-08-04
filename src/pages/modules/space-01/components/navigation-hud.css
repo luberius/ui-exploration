@@ -1,0 +1,41 @@
+/* Navigation HUD Styles */
+
+.space-hud-header {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  opacity: 0.6;
+  color: rgba(var(--space-accent), 1);
+}
+
+.space-hud-label {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  color: rgba(var(--space-text), 0.4);
+}
+
+.space-hud-value {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgba(var(--space-text), 0.6);
+}
+
+.space-hud-reset {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  transition: color 0.3s ease;
+  color: rgba(var(--space-accent), 1);
+}
+
+.space-hud-reset:hover {
+  color: rgba(var(--space-accent), 0.7);
+}

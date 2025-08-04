@@ -1,0 +1,129 @@
+/* Star Map Point Styles */
+
+.space-star-point {
+  position: absolute;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.space-star-glow {
+  position: absolute;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.space-star-core {
+  position: relative;
+  border-radius: 50%;
+}
+
+.space-star-selection-ring {
+  position: absolute;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--space-accent), 1);
+}
+
+.space-star-selection-ring--inner {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(var(--space-accent), 1);
+}
+
+.space-star-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 1.3rem;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.space-star-tooltip--hidden {
+  opacity: 0;
+}
+
+.space-star-point:hover .space-star-tooltip--hidden {
+  opacity: 1;
+}
+
+.space-star-tooltip--visible {
+  opacity: 1;
+}
+
+.space-star-tooltip-content {
+  padding: 0.5rem;
+  min-width: max-content;
+  background-color: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(var(--space-accent), 0.5);
+}
+
+.space-star-tooltip-label {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(var(--space-accent), 1);
+}
+
+.space-star-tooltip-sublabel {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: rgba(var(--space-text), 0.6);
+}
+
+/* Star Color Variants */
+.space-star--blue {
+  background-color: rgba(96, 165, 250, 1);
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+.space-star--white {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.space-star--yellow {
+  background-color: rgba(251, 191, 36, 1);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+.space-star--red {
+  background-color: rgba(248, 113, 113, 1);
+  box-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+}
+
+.space-star--cyan {
+  background-color: rgba(var(--space-accent), 1);
+  box-shadow: 0 0 10px rgba(var(--space-accent), 0.5);
+}
+
+.space-star--purple {
+  background-color: rgba(168, 85, 247, 1);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.space-star--orange {
+  background-color: rgba(251, 146, 60, 1);
+  box-shadow: 0 0 10px rgba(251, 146, 60, 0.5);
+}
+
+.space-star--green {
+  background-color: rgba(74, 222, 128, 1);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+.space-star--indigo {
+  background-color: rgba(129, 140, 248, 1);
+  box-shadow: 0 0 10px rgba(129, 140, 248, 0.5);
+}
+
+.space-star--pink {
+  background-color: rgba(244, 114, 182, 1);
+  box-shadow: 0 0 10px rgba(244, 114, 182, 0.5);
+}

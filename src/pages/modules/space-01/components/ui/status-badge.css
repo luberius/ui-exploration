@@ -1,0 +1,49 @@
+/* Status Badge Styles */
+
+.space-status-badge {
+  border: 1px solid;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.space-status-badge--sm {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.space-status-badge--md {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+}
+
+.space-status-badge--success {
+  color: rgba(34, 197, 94, 1);
+  background-color: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.space-status-badge--warning {
+  color: rgba(251, 191, 36, 1);
+  background-color: rgba(251, 191, 36, 0.2);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.space-status-badge--danger {
+  color: rgba(239, 68, 68, 1);
+  background-color: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.space-status-badge--info {
+  color: rgba(59, 130, 246, 1);
+  background-color: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.space-status-badge--neutral {
+  color: rgba(var(--space-accent), 1);
+  background-color: rgba(var(--space-accent), 0.2);
+  border-color: rgba(var(--space-accent), 0.3);
+}

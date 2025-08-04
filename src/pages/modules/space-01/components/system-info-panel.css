@@ -1,0 +1,35 @@
+/* System Info Panel Styles */
+
+.space-system-name {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 1.125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: rgba(var(--space-text), 1);
+}
+
+.space-system-target-label {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: rgba(var(--space-accent), 1);
+}
+
+.space-empty-state {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(var(--space-text), 0.4);
+}
+
+.space-empty-state-sub {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  color: rgba(var(--space-text), 0.2);
+}

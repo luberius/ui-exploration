@@ -1,0 +1,40 @@
+/* Data Row Styles */
+
+.space-data-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.space-data-label {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: rgba(var(--space-text-dim), 0.5);
+}
+
+.space-data-value {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.space-data-value--default {
+  color: rgba(var(--space-text), 0.8);
+}
+
+.space-data-value--accent {
+  color: rgba(var(--space-accent), 0.7);
+}
+
+.space-data-value--success {
+  color: rgba(34, 197, 94, 0.8); /* green-500 */
+}
+
+.space-data-value--warning {
+  color: rgba(251, 191, 36, 0.8); /* yellow-400 */
+}
+
+.space-data-value--danger {
+  color: rgba(239, 68, 68, 0.8); /* red-500 */
+}

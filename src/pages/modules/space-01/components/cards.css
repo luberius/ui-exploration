@@ -1,0 +1,23 @@
+/* Shared Card Component Styles */
+
+/* This file contains any shared styling for card components that aren't covered by base.css */
+/* Most card components use Tailwind classes and don't need additional custom CSS */
+
+/* Galaxy Map specific sector styles if needed */
+.space-sector-point {
+  transition: all 0.3s ease;
+}
+
+.space-sector-point:hover {
+  transform: scale(1.1);
+}
+
+/* Mission status card specific styles if needed */
+.space-mission-status-indicator {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Analytics card specific styles if needed */
+.space-analytics-chart {
+  /* Custom chart styling would go here */
+}

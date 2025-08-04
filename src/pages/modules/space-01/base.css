@@ -1,0 +1,130 @@
+/* Space-01 Module Base CSS Variables, Animations, and Layout */
+
+:root {
+  --space-primary: 0, 255, 255; /* slate-400 RGB */
+  --space-accent: 255, 255, 255;   /* teal-500 RGB */
+  --space-text: 248, 250, 252;   /* slate-50 RGB */
+  --space-text-dim: 203, 213, 225; /* slate-300 RGB */
+}
+
+/* Animation Keyframes */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Main Container */
+.space-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.space-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Grid and Crosshairs */
+.space-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+}
+
+.space-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(var(--space-primary), 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--space-primary), 0.2) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+
+.space-crosshairs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.space-crosshair-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(var(--space-primary), 0.2);
+}
+
+.space-crosshair-v {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(var(--space-primary), 0.2);
+}
+
+/* Panel Positioning */
+.space-panel-left {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 20rem;
+}
+
+.space-panel-right-top {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 20rem;
+}
+
+.space-panel-right-bottom {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 20rem;
+}
+
+.space-panel-left-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.space-title-container {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  width: max-content;
+  z-index: 10;
+}
+
+/* Title Styles */
+.space-title {
+  font-size: 1.125rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(var(--space-text), 0.9);
+}

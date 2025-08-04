@@ -1,0 +1,43 @@
+/* Faction Panel Styles */
+
+.space-faction-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgba(var(--space-accent), 0.2);
+  border: 1px solid rgba(var(--space-accent), 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.space-faction-icon-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: rgba(var(--space-accent), 1);
+}
+
+.space-faction-name {
+  color: rgba(var(--space-text), 1);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 1.125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.space-section-divider {
+  border-top: 1px solid rgba(var(--space-accent), 0.2);
+  padding-top: 1rem;
+}
+
+.space-section-divider--margin {
+  margin-top: 1rem;
+}
+
+.space-objective-text {
+  color: rgba(var(--space-text), 0.8);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}

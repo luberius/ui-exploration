@@ -1,0 +1,65 @@
+/* Collapsible Panel Styles */
+
+.space-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin: -0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.space-panel-header:hover {
+  background-color: rgba(var(--space-accent), 0.05);
+}
+
+.space-panel-icon {
+  color: rgba(var(--space-accent), 0.8);
+}
+
+.space-panel-title {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  color: rgba(var(--space-text), 0.9);
+}
+
+.space-panel-collapse-icon {
+  transition: color 0.3s ease;
+  color: rgba(var(--space-accent), 0.7);
+}
+
+.space-panel-collapse-icon:hover {
+  color: rgba(var(--space-text), 1);
+}
+
+.space-panel-hotkey {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: rgba(var(--space-text-dim), 0.4);
+}
+
+.space-panel-header:hover .space-panel-hotkey {
+  opacity: 1;
+}
+
+.space-panel-content {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(var(--space-accent), 0.15);
+}
+
+.space-panel-collapsed-text {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(var(--space-text-dim), 0.4);
+}
