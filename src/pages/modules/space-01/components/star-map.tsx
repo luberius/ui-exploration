@@ -1,7 +1,7 @@
 import { StarMapPoint } from './ui'
 import { useSpace } from '../context/space-context'
 import { useRef, useState, useEffect } from 'react'
-import './star-map.css'
+import './css/star-map.css'
 
 export default function StarMap() {
   const { stars, selectedStar, setSelectedStar, mapState, setMapState } = useSpace()

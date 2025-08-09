@@ -1,4 +1,4 @@
-import './progress-bar.css'
+import '../css/progress-bar.css'
 
 interface ProgressBarProps {
   value: number

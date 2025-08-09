@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import './data-row.css'
+import '../css/data-row.css'
 
 interface DataRowProps {
   label: string

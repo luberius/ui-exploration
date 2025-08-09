@@ -3,9 +3,10 @@ import SystemInfoPanel from './components/system-info-panel'
 import FactionPanel from './components/faction-panel'
 import MissionPanel from './components/mission-panel'
 import NavigationHUD from './components/navigation-hud'
+import DesktopOverlay from './components/desktop-overlay'
 import { SpaceProvider } from './context/space-context'
 import { motion } from 'motion/react'
-import './base.css'
+import './components/css/base.css'
 
 export default function Space01() {
   return (
@@ -16,6 +17,7 @@ export default function Space01() {
         backgroundImage: "url('/src/assets/wallhaven-1j3vj9_2560x1440.png')"
       }}
     >
+      <DesktopOverlay />
       {/* Dark overlay for better readability */}
       <div className="space-overlay" />
       

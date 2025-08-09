@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:llms.motion.dev)"
+      "WebFetch(domain:llms.motion.dev)",
+      "Bash(find:*)"
     ],
     "deny": []
   }

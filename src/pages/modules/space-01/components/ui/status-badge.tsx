@@ -1,4 +1,4 @@
-import './status-badge.css'
+import '../css/status-badge.css'
 
 interface StatusBadgeProps {
   status: string

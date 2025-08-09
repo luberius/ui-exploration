@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { motion } from 'motion/react'
-import './space-button.css'
+import '../css/space-button.css'
 
 interface SpaceButtonProps {
   children: ReactNode

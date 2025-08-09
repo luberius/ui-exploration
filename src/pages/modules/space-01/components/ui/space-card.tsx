@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import './space-card.css'
+import '../css/space-card.css'
 
 interface SpaceCardProps {
   children: ReactNode

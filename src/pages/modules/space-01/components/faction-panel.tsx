@@ -1,5 +1,5 @@
 import { CollapsiblePanel, DataRow, ProgressBar } from './ui'
-import './faction-panel.css'
+import './css/faction-panel.css'
 
 export default function FactionPanel() {
   const factionIcon = (

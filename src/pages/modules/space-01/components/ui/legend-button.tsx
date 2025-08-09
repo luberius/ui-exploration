@@ -1,4 +1,4 @@
-import './legend-button.css'
+import '../css/legend-button.css'
 
 interface LegendButtonProps {
   hotkey: string

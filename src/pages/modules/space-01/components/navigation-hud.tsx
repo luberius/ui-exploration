@@ -1,7 +1,7 @@
 import { LegendButton } from './ui'
 import { useState } from 'react'
 import { useSpace } from '../context/space-context'
-import './navigation-hud.css'
+import './css/navigation-hud.css'
 
 export default function NavigationHUD() {
   const { mapState, setMapState } = useSpace()

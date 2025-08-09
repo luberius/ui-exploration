@@ -1,5 +1,5 @@
 import { CollapsiblePanel, ProgressBar, StatusBadge, SpaceButton } from './ui'
-import './mission-panel.css'
+import './css/mission-panel.css'
 
 export default function MissionPanel() {
   const missions = [

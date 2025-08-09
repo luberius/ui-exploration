@@ -1,6 +1,6 @@
 import { SpaceCard, DataRow, ProgressBar, StatusBadge, SectionHeader, SpaceButton, MatrixText } from './ui'
 import { useSpace } from '../context/space-context'
-import './system-info-panel.css'
+import './css/system-info-panel.css'
 
 export default function SystemInfoPanel() {
   const { selectedStar } = useSpace()

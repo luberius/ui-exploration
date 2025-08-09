@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react'
 import SpaceCard from './space-card'
 import { motion, AnimatePresence } from 'motion/react'
-import './collapsible-panel.css'
+import '../css/collapsible-panel.css'
 
 interface CollapsiblePanelProps {
   title: string

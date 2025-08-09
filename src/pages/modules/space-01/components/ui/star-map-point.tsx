@@ -1,4 +1,4 @@
-import "./star-map-point.css";
+import "../css/star-map-point.css";
 
 interface StarMapPointProps {
   x: number;

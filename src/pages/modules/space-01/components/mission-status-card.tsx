@@ -1,4 +1,4 @@
-import './cards.css'
+import './css/cards.css'
 
 export default function MissionStatusCard() {
   const missions = [
