@@ -1,0 +1,17 @@
+/* Dynamic photo shadow based on light source and rotation */
+.photo-shadow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, var(--shadow-opacity, 0.3));
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(calc(var(--shadow-blur, 1) * 1px));
+  transform: translate(
+    calc(var(--shadow-x, 0) * 1px), 
+    calc(var(--shadow-y, 0) * 1px)
+  ) rotate(calc(var(--shadow-rotation, 0) * 1deg));
+}

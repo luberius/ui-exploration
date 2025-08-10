@@ -1,45 +1,59 @@
+import PhotoCard from "./photo-card";
+
 interface Photo {
-  id: string
-  src: string
-  alt: string
+  id: string;
+  src: string;
+  alt: string;
 }
 
 interface PhotoGridViewProps {
-  photos: Photo[]
+  photos: Photo[];
 }
 
 export default function PhotoGridView({ photos }: PhotoGridViewProps) {
+  // Predefined scattered positions for natural photo placement
+  const scatterPositions = [
+    { x: 120, y: 80, rotation: -12 },   // Top left
+    { x: 280, y: 40, rotation: 8 },     // Top center
+    { x: 420, y: 90, rotation: -5 },    // Top right
+    { x: 80, y: 180, rotation: 15 },    // Mid left
+    { x: 240, y: 160, rotation: -8 },   // Center
+    { x: 400, y: 200, rotation: 12 },   // Mid right
+    { x: 160, y: 280, rotation: -15 },  // Bottom left
+    { x: 320, y: 260, rotation: 6 },    // Bottom center
+    { x: 440, y: 320, rotation: -10 },  // Bottom right
+  ];
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-[600px] space-y-8">
-      <div className="relative">
-        <div className="grid grid-cols-3 gap-4 max-w-lg">
-          {photos.slice(0, 9).map((photo, index) => (
+    <div className="flex flex-col items-center justify-center min-h-[700px] space-y-8">
+      <div className="relative w-[600px] h-[400px]">
+        {photos.slice(0, 9).map((photo, index) => {
+          const position = scatterPositions[index];
+          return (
             <div
               key={photo.id}
-              className="bg-white shadow-lg rounded-sm overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-300"
+              className="absolute"
               style={{
-                transform: `rotate(${(index % 3 - 1) * 5}deg) translate(${(index % 2) * 10}px, ${Math.floor(index / 3) * 5}px)`,
-                zIndex: photos.length - index
+                left: `${position.x}px`,
+                top: `${position.y}px`,
+                zIndex: photos.length - index,
               }}
             >
-              <div className="aspect-square bg-gray-200 relative">
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="bg-white p-2">
-                <div className="h-4"></div>
-              </div>
+              <PhotoCard
+                photo={photo}
+                rotation={position.rotation}
+                zIndex={photos.length - index}
+                lightSource={{ x: 300, y: -20 }} // Center light source
+                width="w-[120px]"
+              />
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
-      
+
       <div className="text-center">
         <p className="text-lg text-gray-500">A lot happened last week.</p>
       </div>
     </div>
-  )
+  );
 }
