@@ -1,5 +1,6 @@
 import "./photo-shadows.css";
-import { ShadowEngine, PhotoObject } from "./shadow-engine";
+import { ShadowEngine, type PhotoObject } from "./shadow-engine";
+import { motion } from "motion/react";
 
 interface Photo {
   id: string;
@@ -40,7 +41,8 @@ export default function PhotoCard({
   const shadowProps = shadowEngine.calculateShadow(photoObject);
   
   return (
-    <div
+    <motion.div
+      layoutId={`photo-${photo.id}`}
       key={photo.id}
       className={`overflow-visible transform relative z-0 ${width} photo-shadow`}
       style={{
@@ -60,6 +62,12 @@ export default function PhotoCard({
         '--penumbra-offset-y': shadowProps.penumbra.offset.y,
         '--penumbra-spread': shadowProps.penumbra.spread,
       } as React.CSSProperties}
+      transition={{
+        type: "spring",
+        damping: 20,
+        stiffness: 300,
+        mass: 0.8
+      }}
     >
       <div className="aspect-square relative bg-[#D4D5D6ff] p-2">
         <img
@@ -72,6 +80,6 @@ export default function PhotoCard({
           <div className="h-1"></div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
