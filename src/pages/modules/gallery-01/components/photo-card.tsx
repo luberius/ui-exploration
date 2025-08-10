@@ -34,6 +34,8 @@ export default function PhotoCard({
           "--shadow-x": "4px",
           "--shadow-y": "4px",
           "--shadow-blur": "2px",
+          "--shadow-skew-x": `${rotation * 0.3}deg`,
+          "--shadow-skew-y": `${Math.abs(rotation) * 0.1}deg`,
         } as React.CSSProperties
       }
       initial={false}
@@ -56,8 +58,7 @@ export default function PhotoCard({
           className="w-full h-full object-cover"
         />
 
-        <div className="p-2">
-        </div>
+        <div className="p-2"></div>
       </div>
     </motion.div>
   );

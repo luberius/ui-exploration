@@ -13,7 +13,7 @@
   transform: translate(
     var(--shadow-x, 2px), 
     var(--shadow-y, 20px)
-  );
+  ) skew(var(--shadow-skew-x, 0deg), var(--shadow-skew-y, 0deg));
 }
 
 /* Secondary shadow for depth */
@@ -31,5 +31,5 @@
   transform: translate(
     calc(var(--shadow-x, 2px) * 1.5), 
     calc(var(--shadow-y, 20px) * 1.5)
-  );
+  ) skew(calc(var(--shadow-skew-x, 0deg) * 1.2), calc(var(--shadow-skew-y, 0deg) * 1.2));
 }
