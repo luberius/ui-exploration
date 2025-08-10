@@ -1,4 +1,5 @@
 import "./photo-shadows.css";
+import { ShadowEngine, PhotoObject } from "./shadow-engine";
 
 interface Photo {
   id: string;
@@ -8,62 +9,35 @@ interface Photo {
 
 interface PhotoCardProps {
   photo: Photo;
+  position?: { x: number; y: number; z?: number };
   rotation?: number;
   translate?: { x: number; y: number };
   zIndex?: number;
   width?: string;
-  lightSource?: { x: number; y: number };
+  shadowEngine?: ShadowEngine;
 }
 
-function calculateShadow(rotation: number, lightSource: { x: number; y: number }) {
-  // Convert rotation to radians
-  const rotationRad = (rotation * Math.PI) / 180;
-  
-  // Light source relative to photo center (assuming 120px photo)
-  const photoCenter = { x: 60, y: 60 };
-  const lightVector = {
-    x: lightSource.x - photoCenter.x,
-    y: lightSource.y - photoCenter.y
-  };
-  
-  // Calculate shadow offset based on light direction and photo rotation
-  // The shadow appears opposite to the light direction
-  const baseDistance = 3; // Base shadow distance
-  const shadowDistance = Math.sqrt(lightVector.x ** 2 + lightVector.y ** 2) * 0.03;
-  
-  // Shadow offset (opposite to light direction)
-  const shadowX = -Math.sign(lightVector.x) * Math.min(shadowDistance, baseDistance);
-  const shadowY = -Math.sign(lightVector.y) * Math.min(shadowDistance, baseDistance) + 2; // Always cast down slightly
-  
-  // Shadow rotation follows photo rotation but slightly offset
-  const shadowRotation = rotation * 0.8;
-  
-  // Shadow opacity based on distance from light
-  const maxDistance = 200;
-  const distance = Math.min(Math.sqrt(lightVector.x ** 2 + lightVector.y ** 2), maxDistance);
-  const opacity = 0.15 + (distance / maxDistance) * 0.25; // 0.15 to 0.4
-  
-  // Shadow blur increases with distance from light (softer shadows when further)
-  const blur = 1 + (distance / maxDistance) * 2; // 1px to 3px blur
-  
-  return {
-    x: shadowX,
-    y: shadowY,
-    rotation: shadowRotation,
-    opacity: opacity,
-    blur: blur
-  };
-}
+// Global shadow engine instance
+const defaultShadowEngine = new ShadowEngine();
 
 export default function PhotoCard({
   photo,
+  position = { x: 0, y: 0, z: 5 }, // Default 5px above surface
   rotation = 0,
   translate = { x: 0, y: 0 },
   zIndex,
   width = "w-[120px]",
-  lightSource = { x: 0, y: -20 } // Default: light from top-center, 20px above
+  shadowEngine = defaultShadowEngine
 }: PhotoCardProps) {
-  const shadow = calculateShadow(rotation, lightSource);
+  // Create photo object for shadow calculation
+  const photoObject: PhotoObject = {
+    position: { x: position.x, y: position.y, z: position.z || 5 },
+    rotation: rotation,
+    size: { width: 120, height: 120 } // Standard photo size
+  };
+
+  // Calculate physics-based shadow
+  const shadowProps = shadowEngine.calculateShadow(photoObject);
   
   return (
     <div
@@ -72,11 +46,19 @@ export default function PhotoCard({
       style={{
         transform: `rotate(${rotation}deg) translate(${translate.x}px, ${translate.y}px)`,
         zIndex: zIndex,
-        '--shadow-x': shadow.x,
-        '--shadow-y': shadow.y,
-        '--shadow-rotation': shadow.rotation,
-        '--shadow-opacity': shadow.opacity,
-        '--shadow-blur': shadow.blur,
+        '--shadow-x': shadowProps.offset.x,
+        '--shadow-y': shadowProps.offset.y,
+        '--shadow-rotation': shadowProps.rotation,
+        '--shadow-opacity': shadowProps.opacity,
+        '--shadow-blur': shadowProps.blur,
+        '--shadow-color-r': shadowProps.color.r,
+        '--shadow-color-g': shadowProps.color.g,
+        '--shadow-color-b': shadowProps.color.b,
+        '--shadow-spread': shadowProps.spread,
+        '--shadow-softness': shadowProps.softness,
+        '--penumbra-offset-x': shadowProps.penumbra.offset.x,
+        '--penumbra-offset-y': shadowProps.penumbra.offset.y,
+        '--penumbra-spread': shadowProps.penumbra.spread,
       } as React.CSSProperties}
     >
       <div className="aspect-square relative bg-[#D4D5D6ff] p-2">

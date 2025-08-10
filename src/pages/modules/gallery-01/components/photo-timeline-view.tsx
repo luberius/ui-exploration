@@ -1,4 +1,5 @@
 import PhotoCard from "./photo-card";
+import { ShadowEngine } from "./shadow-engine";
 
 interface Photo {
   id: string;
@@ -12,6 +13,15 @@ interface PhotoTimelineViewProps {
 }
 
 export default function PhotoTimelineView({ photos }: PhotoTimelineViewProps) {
+  // Create shadow engine for timeline view
+  const shadowEngine = new ShadowEngine();
+  shadowEngine.clearLightSources();
+  shadowEngine.addLightSource({
+    position: { x: 300, y: 0, z: -80 }, // Light from above, slightly forward
+    intensity: 120,
+    color: { r: 1, g: 0.98, b: 0.95 }, // Neutral white light
+    temperature: 5500 // Daylight temperature
+  });
   const groupedPhotos = photos.reduce(
     (acc, photo) => {
       const date = photo.date;
@@ -45,13 +55,19 @@ export default function PhotoTimelineView({ photos }: PhotoTimelineViewProps) {
 
             <div className="grid grid-cols-4 gap-4 overflow-x-visible pb-2">
               {datePhotos.map((photo, index) => {
+                const baseX = index * 140; // Spacing between photos
                 return (
                   <PhotoCard
                     key={photo.id}
                     photo={photo}
+                    position={{ 
+                      x: baseX, 
+                      y: 0, 
+                      z: 4 + Math.random() * 3 // Slight random height variation
+                    }}
                     rotation={index % 2 === 0 ? -2 : 2}
                     width="w-[120px] flex-shrink-0"
-                    lightSource={{ x: 0, y: -20 }}
+                    shadowEngine={shadowEngine}
                   />
                 );
               })}
