@@ -13,20 +13,20 @@ interface PhotoGridViewProps {
 export default function PhotoGridView({ photos }: PhotoGridViewProps) {
   // Predefined scattered positions with 3D coordinates
   const scatterPositions = [
-    { x: 120, y: 80, z: 8, rotation: -12 }, // Top left - slightly elevated
-    { x: 280, y: 40, z: 3, rotation: 8 }, // Top center - closer to surface
-    { x: 420, y: 90, z: 6, rotation: -5 }, // Top right
-    { x: 80, y: 180, z: 12, rotation: 15 }, // Mid left - more elevated
-    { x: 240, y: 160, z: 2, rotation: -8 }, // Center - almost flat
-    { x: 400, y: 200, z: 7, rotation: 12 }, // Mid right
-    { x: 160, y: 280, z: 10, rotation: -15 }, // Bottom left - elevated
-    { x: 320, y: 260, z: 4, rotation: 6 }, // Bottom center
-    { x: 440, y: 320, z: 9, rotation: -10 }, // Bottom right
+    { x: 84, y: 56, z: 8, rotation: -12 }, // Top left - slightly elevated
+    { x: 196, y: 28, z: 3, rotation: 8 }, // Top center - closer to surface
+    { x: 294, y: 63, z: 6, rotation: -5 }, // Top right
+    { x: 56, y: 126, z: 12, rotation: 15 }, // Mid left - more elevated
+    { x: 168, y: 112, z: 2, rotation: -8 }, // Center - almost flat
+    { x: 280, y: 140, z: 7, rotation: 12 }, // Mid right
+    { x: 112, y: 196, z: 10, rotation: -15 }, // Bottom left - elevated
+    { x: 224, y: 182, z: 4, rotation: 6 }, // Bottom center
+    { x: 308, y: 224, z: 9, rotation: -10 }, // Bottom right
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[700px] space-y-8">
-      <div className="relative w-[600px] h-[400px]">
+    <div className="flex flex-col items-center justify-center min-h-[700px] space-y-8 px-4">
+      <div className="relative w-[420px] h-[280px]">
         {photos.slice(0, 9).map((photo, index) => {
           const position = scatterPositions[index];
           return (
@@ -44,7 +44,7 @@ export default function PhotoGridView({ photos }: PhotoGridViewProps) {
                 position={{ x: position.x, y: position.y, z: position.z }}
                 rotation={position.rotation}
                 zIndex={photos.length - index}
-                width="w-[120px]"
+                width="w-[84px]"
               />
             </div>
           );

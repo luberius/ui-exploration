@@ -71,22 +71,38 @@ export default function Gallery01() {
   const [view, setView] = useState<"grid" | "timeline">("grid");
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 max-w-sm">
-        <div className="flex items-center justify-between py-6">
-          <h1 className="text-3xl font-bold">Gallery</h1>
-          <Button
-            onClick={() => setView(view === "grid" ? "timeline" : "grid")}
-          >
-            {view === "grid" ? "Show Timeline" : "Show Grid"}
-          </Button>
-        </div>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+      {/* iPhone-style mobile container */}
+      <div className="relative">
+        {/* Device outer frame */}
+        <div className="bg-black rounded-[2.5rem] p-1 shadow-2xl">
+          {/* Device screen */}
+          <div className="bg-gray-50 rounded-[2.2rem] overflow-hidden w-[375px] h-[812px] relative">
+            {/* Dynamic Island */}
+            <div className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-black rounded-full w-[126px] h-[30px] z-50"></div>
+            
+            {/* Screen content */}
+            <div className="h-full overflow-hidden pt-12 pb-8 flex flex-col">
+              <div className="flex-1 overflow-auto">
+                {view === "grid" ? (
+                  <PhotoGridView photos={mockPhotos} />
+                ) : (
+                  <PhotoTimelineView photos={mockPhotos} />
+                )}
+              </div>
 
-        {view === "grid" ? (
-          <PhotoGridView photos={mockPhotos} />
-        ) : (
-          <PhotoTimelineView photos={mockPhotos} />
-        )}
+              {/* Bottom button */}
+              <div className="pt-4 px-4 flex justify-center">
+                <Button
+                  onClick={() => setView(view === "grid" ? "timeline" : "grid")}
+                  className="text-xs px-4 py-2 rounded-full"
+                >
+                  {view === "grid" ? "Timeline" : "Grid"}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

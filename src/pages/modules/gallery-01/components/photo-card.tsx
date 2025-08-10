@@ -21,7 +21,7 @@ export default function PhotoCard({
   rotation = 0,
   translate = { x: 0, y: 0 },
   zIndex,
-  width = "w-[120px]",
+  width = "w-[84px]",
 }: PhotoCardProps) {
   return (
     <motion.div
@@ -57,7 +57,6 @@ export default function PhotoCard({
         />
 
         <div className="p-2">
-          <div className="h-1"></div>
         </div>
       </div>
     </motion.div>
