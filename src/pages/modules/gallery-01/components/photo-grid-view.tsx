@@ -1,5 +1,4 @@
 import PhotoCard from "./photo-card";
-import { ShadowEngine } from "./shadow-engine";
 
 interface Photo {
   id: string;
@@ -12,16 +11,6 @@ interface PhotoGridViewProps {
 }
 
 export default function PhotoGridView({ photos }: PhotoGridViewProps) {
-  // Create shadow engine with centered light source
-  const shadowEngine = new ShadowEngine();
-  shadowEngine.clearLightSources();
-  shadowEngine.addLightSource({
-    position: { x: 0, y: 0, z: -100 }, // Centered above the container
-    intensity: 150,
-    color: { r: 1, g: 0.95, b: 0.9 }, // Slightly warm light
-    temperature: 5200, // Warm daylight
-  });
-
   // Predefined scattered positions with 3D coordinates
   const scatterPositions = [
     { x: 120, y: 80, z: 8, rotation: -12 }, // Top left - slightly elevated
@@ -55,7 +44,6 @@ export default function PhotoGridView({ photos }: PhotoGridViewProps) {
                 position={{ x: position.x, y: position.y, z: position.z }}
                 rotation={position.rotation}
                 zIndex={photos.length - index}
-                shadowEngine={shadowEngine}
                 width="w-[120px]"
               />
             </div>

@@ -1,5 +1,4 @@
 import PhotoCard from "./photo-card";
-import { ShadowEngine } from "./shadow-engine";
 
 interface Photo {
   id: string;
@@ -13,15 +12,6 @@ interface PhotoTimelineViewProps {
 }
 
 export default function PhotoTimelineView({ photos }: PhotoTimelineViewProps) {
-  // Create shadow engine for timeline view
-  const shadowEngine = new ShadowEngine();
-  shadowEngine.clearLightSources();
-  shadowEngine.addLightSource({
-    position: { x: 300, y: 0, z: -80 }, // Light from above, slightly forward
-    intensity: 120,
-    color: { r: 1, g: 0.98, b: 0.95 }, // Neutral white light
-    temperature: 5500 // Daylight temperature
-  });
   const groupedPhotos = photos.reduce(
     (acc, photo) => {
       const date = photo.date;
@@ -39,6 +29,29 @@ export default function PhotoTimelineView({ photos }: PhotoTimelineViewProps) {
     return { day, month };
   };
 
+  const getRelativeDate = (dateStr: string) => {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+    
+    // For demo, assuming dateStr format is like "12 Jan"
+    const [day, month] = dateStr.split(" ");
+    const currentYear = today.getFullYear();
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const monthIndex = monthNames.indexOf(month);
+    
+    const photoDate = new Date(currentYear, monthIndex, parseInt(day));
+    
+    const diffTime = today.getTime() - photoDate.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 0) return 'Today';
+    if (diffDays === 1) return 'Yesterday';
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? 's' : ''} ago`;
+    return `${Math.floor(diffDays / 30)} month${Math.floor(diffDays / 30) > 1 ? 's' : ''} ago`;
+  };
+
   return (
     <div className="max-w-2xl mx-auto space-y-8 py-8">
       {Object.entries(groupedPhotos).map(([date, datePhotos]) => {
@@ -46,7 +59,7 @@ export default function PhotoTimelineView({ photos }: PhotoTimelineViewProps) {
         return (
           <div key={date} className="space-y-4">
             <div className="space-y-1">
-              <h3 className="text-orange-500 font-medium">Yesterday</h3>
+              <h3 className="text-orange-500 font-medium">{getRelativeDate(date)}</h3>
               <div className="flex items-baseline space-x-2">
                 <span className="text-2xl font-bold text-gray-900">{day}</span>
                 <span className="text-gray-500">{month}</span>
@@ -65,9 +78,8 @@ export default function PhotoTimelineView({ photos }: PhotoTimelineViewProps) {
                       y: 0, 
                       z: 4 + Math.random() * 3 // Slight random height variation
                     }}
-                    rotation={index % 2 === 0 ? -2 : 2}
+                    rotation={(Math.random() - 0.5) * 10} // Random rotation between -5 and 5 degrees
                     width="w-[120px] flex-shrink-0"
-                    shadowEngine={shadowEngine}
                   />
                 );
               })}

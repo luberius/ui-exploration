@@ -1,5 +1,4 @@
 import "./photo-shadows.css";
-import { ShadowEngine, type PhotoObject } from "./shadow-engine";
 import { motion } from "motion/react";
 
 interface Photo {
@@ -15,31 +14,15 @@ interface PhotoCardProps {
   translate?: { x: number; y: number };
   zIndex?: number;
   width?: string;
-  shadowEngine?: ShadowEngine;
 }
-
-// Global shadow engine instance
-const defaultShadowEngine = new ShadowEngine();
 
 export default function PhotoCard({
   photo,
-  position = { x: 0, y: 0, z: 5 }, // Default 5px above surface
   rotation = 0,
   translate = { x: 0, y: 0 },
   zIndex,
   width = "w-[120px]",
-  shadowEngine = defaultShadowEngine,
 }: PhotoCardProps) {
-  // Create photo object for shadow calculation
-  const photoObject: PhotoObject = {
-    position: { x: position.x, y: position.y, z: position.z || 5 },
-    rotation: rotation,
-    size: { width: 100, height: 100 }, // Standard photo size
-  };
-
-  // Calculate physics-based shadow
-  const shadowProps = shadowEngine.calculateShadow(photoObject);
-
   return (
     <motion.div
       layoutId={`photo-${photo.id}`}
@@ -47,23 +30,18 @@ export default function PhotoCard({
       className={`overflow-visible transform relative z-0 ${width} photo-shadow`}
       style={
         {
-          transform: `rotate(${rotation}deg) translate(${translate.x}px, ${translate.y}px)`,
           zIndex: zIndex,
-          "--shadow-x": shadowProps.offset.x,
-          "--shadow-y": shadowProps.offset.y,
-          "--shadow-rotation": shadowProps.rotation,
-          "--shadow-opacity": shadowProps.opacity,
-          "--shadow-blur": shadowProps.blur,
-          "--shadow-color-r": shadowProps.color.r,
-          "--shadow-color-g": shadowProps.color.g,
-          "--shadow-color-b": shadowProps.color.b,
-          "--shadow-spread": shadowProps.spread,
-          "--shadow-softness": shadowProps.softness,
-          "--penumbra-offset-x": shadowProps.penumbra.offset.x,
-          "--penumbra-offset-y": shadowProps.penumbra.offset.y,
-          "--penumbra-spread": shadowProps.penumbra.spread,
+          "--shadow-x": "4px",
+          "--shadow-y": "4px",
+          "--shadow-blur": "2px",
         } as React.CSSProperties
       }
+      initial={false}
+      animate={{
+        rotate: rotation,
+        x: translate.x,
+        y: translate.y,
+      }}
       transition={{
         type: "spring",
         damping: 20,
