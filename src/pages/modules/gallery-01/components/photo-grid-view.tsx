@@ -16,23 +16,23 @@ export default function PhotoGridView({ photos }: PhotoGridViewProps) {
   const shadowEngine = new ShadowEngine();
   shadowEngine.clearLightSources();
   shadowEngine.addLightSource({
-    position: { x: 300, y: 200, z: -100 }, // Centered above the container
+    position: { x: 0, y: 0, z: -100 }, // Centered above the container
     intensity: 150,
     color: { r: 1, g: 0.95, b: 0.9 }, // Slightly warm light
-    temperature: 5200 // Warm daylight
+    temperature: 5200, // Warm daylight
   });
 
   // Predefined scattered positions with 3D coordinates
   const scatterPositions = [
-    { x: 120, y: 80, z: 8, rotation: -12 },   // Top left - slightly elevated
-    { x: 280, y: 40, z: 3, rotation: 8 },     // Top center - closer to surface
-    { x: 420, y: 90, z: 6, rotation: -5 },    // Top right
-    { x: 80, y: 180, z: 12, rotation: 15 },   // Mid left - more elevated
-    { x: 240, y: 160, z: 2, rotation: -8 },   // Center - almost flat
-    { x: 400, y: 200, z: 7, rotation: 12 },   // Mid right
+    { x: 120, y: 80, z: 8, rotation: -12 }, // Top left - slightly elevated
+    { x: 280, y: 40, z: 3, rotation: 8 }, // Top center - closer to surface
+    { x: 420, y: 90, z: 6, rotation: -5 }, // Top right
+    { x: 80, y: 180, z: 12, rotation: 15 }, // Mid left - more elevated
+    { x: 240, y: 160, z: 2, rotation: -8 }, // Center - almost flat
+    { x: 400, y: 200, z: 7, rotation: 12 }, // Mid right
     { x: 160, y: 280, z: 10, rotation: -15 }, // Bottom left - elevated
-    { x: 320, y: 260, z: 4, rotation: 6 },    // Bottom center
-    { x: 440, y: 320, z: 9, rotation: -10 },  // Bottom right
+    { x: 320, y: 260, z: 4, rotation: 6 }, // Bottom center
+    { x: 440, y: 320, z: 9, rotation: -10 }, // Bottom right
   ];
 
   return (
