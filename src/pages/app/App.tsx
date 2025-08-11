@@ -74,8 +74,7 @@ function HomePage() {
         </h1>
 
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed tracking-wide">
-          A modern playground for experimenting with UI/UX designs, featuring
-          modular components and intuitive navigation experiences.
+          My personal playground for experimenting & exploring UI/UX ✨
         </p>
 
         <p
